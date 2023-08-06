@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dky0yxg0pgbok"]
+
+[ext_resource type="PackedScene" uid="uid://bin3is2cu0rvr" path="res://entities/shared/controls/topdown_2d_keyboard_control.tscn" id="2_360xr"]
+[ext_resource type="Texture2D" uid="uid://wjwfy0e7jfxb" path="res://icon.svg" id="2_sdyld"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_okq0l"]
+size = Vector2(64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_72851"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sdyld")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_okq0l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_72851")
+
+[node name="Topdown2dKeyboardControl" parent="." instance=ExtResource("2_360xr")]
