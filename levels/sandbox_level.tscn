@@ -1,24 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://boobmaqwqh4sg"]
+[gd_scene load_steps=4 format=3 uid="uid://bmxphl6c67pns"]
 
-[ext_resource type="Script" path="res://entities/Player.cs" id="1_q3vb1"]
-[ext_resource type="Texture2D" uid="uid://wjwfy0e7jfxb" path="res://icon.svg" id="2_etnlg"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_72851"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_etnlg")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="TileSet" uid="uid://yyt201a3jcf2" path="res://assets/tilesets/kenney_scribbledungeons/kenney_scribbledungeons.tres" id="2_ir1kw"]
+[ext_resource type="PackedScene" uid="uid://dky0yxg0pgbok" path="res://entities/player/player.tscn" id="2_khlfx"]
+[ext_resource type="PackedScene" uid="uid://crupla8b4exdv" path="res://entities/shared/nav_mesh_2d_seeker.tscn" id="3_07uax"]
 
 [node name="SandboxLevel" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [-3.0, 19.0, 120.0, 120.0]
+metadata/_edit_vertical_guides_ = [480.0, 457.0]
 
-[node name="Player" type="Node2D" parent="."]
-position = Vector2(496, 264)
-script = ExtResource("1_q3vb1")
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_ir1kw")
+format = 2
+layer_0/name = "ground and walls"
+layer_0/z_index = 1
+layer_0/tile_data = PackedInt32Array(131073, 196609, 0, 131074, 196609, 0, 131075, 196609, 0, 131076, 196609, 0, 131077, 196609, 0, 131078, 196609, 0, 131079, 131073, 5, 196615, 1, 1, 262151, 1, 1, 262150, 1, 1, 262149, 1, 1, 262148, 1, 1, 262147, 1, 1, 262146, 1, 1, 262145, 1, 1, 262144, 196609, 196608, 196608, 196609, 196608, 196609, 1, 1, 196610, 1, 1, 196611, 1, 1, 196612, 1, 1, 196613, 1, 1, 196614, 1, 1, 131072, 131073, 0, 327680, 131073, 262144, 327681, 196609, 65536, 327682, 196609, 65536, 327683, 196609, 65536, 327684, 196609, 65536, 327685, 196609, 65536, 327686, 196609, 65536, 327687, 196609, 65536, 7, 131073, 0, 65543, 196609, 196608, 8, 196609, 0, 9, 196609, 0, 10, 196609, 0, 11, 196609, 0, 12, 196609, 0, 13, 196609, 0, 14, 196609, 0, 15, 131073, 65536, 65551, 196609, 262144, 131087, 131073, 196608, 131086, 196609, 65536, 65550, 1, 1, 131085, 196609, 65536, 131084, 131073, 131077, 131083, 1, 1, 131082, 1, 1, 131081, 1, 1, 131080, 1, 1, 65549, 1, 1, 65548, 1, 1, 65547, 1, 1, 65546, 1, 1, 65545, 1, 1, 65544, 1, 1, 196616, 1, 1, 196617, 1, 1, 262152, 1, 1, 196618, 1, 1, 327688, 196609, 65536, 262153, 1, 1, 262154, 1, 1, 327690, 196609, 65536, 327689, 196609, 65536, 327691, 196609, 65536, 327692, 131073, 196608, 262156, 196609, 262144, 262155, 1, 1, 196619, 1, 1, 196620, 196609, 262144)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
-sprite_frames = SubResource("SpriteFrames_72851")
+[node name="Player" parent="." instance=ExtResource("2_khlfx")]
+position = Vector2(711, 251)
+
+[node name="NavMesh2DSeeker" parent="." node_paths=PackedStringArray("Targets") instance=ExtResource("3_07uax")]
+position = Vector2(69, 290)
+Targets = [NodePath("../Waypoint1"), NodePath("../Waypoint2"), NodePath("../Waypoint3"), NodePath("../Player")]
+StopAfterLastTargetReached = false
+
+[node name="Waypoint1" type="Node2D" parent="."]
+position = Vector2(84, 143)
+
+[node name="Waypoint2" type="Node2D" parent="."]
+position = Vector2(561, 293)
+
+[node name="Waypoint3" type="Node2D" parent="."]
+position = Vector2(870, 89)

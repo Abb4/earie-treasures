@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://crupla8b4exdv"]
+
+[ext_resource type="Script" path="res://entities/shared/nav_mesh_2d_seeker.cs" id="1_j5ea6"]
+[ext_resource type="Texture2D" uid="uid://wjwfy0e7jfxb" path="res://icon.svg" id="1_wiouv"]
+[ext_resource type="Script" path="res://entities/shared/NavigateTowards2dNodes.cs" id="2_gkywp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_okq0l"]
+size = Vector2(64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_72851"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wiouv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="NavMesh2DSeeker" type="CharacterBody2D" node_paths=PackedStringArray("Targets", "navigationComponent")]
+z_index = 1
+script = ExtResource("1_j5ea6")
+Targets = []
+navigationComponent = NodePath("NavigateTowards2dNodes")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 80.0
+target_desired_distance = 80.0
+debug_enabled = true
+
+[node name="NavigateTowards2dNodes" type="Node" parent="." node_paths=PackedStringArray("Parent", "NavigationAgent2D", "Targets")]
+script = ExtResource("2_gkywp")
+Parent = NodePath("..")
+NavigationAgent2D = NodePath("../NavigationAgent2D")
+Targets = []
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_okq0l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.839216, 0, 0.313726, 1)
+z_index = 1
+scale = Vector2(0.492, 0.5)
+sprite_frames = SubResource("SpriteFrames_72851")

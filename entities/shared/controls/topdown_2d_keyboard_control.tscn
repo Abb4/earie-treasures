@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bin3is2cu0rvr"]
+
+[ext_resource type="Script" path="res://entities/shared/controls/Topdown2dKeyboardControl.cs" id="1_qr1x3"]
+
+[node name="Topdown2dKeyboardControl" type="Node2D"]
+script = ExtResource("1_qr1x3")
