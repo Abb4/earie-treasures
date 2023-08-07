@@ -3,7 +3,7 @@ using Godot.Collections;
 
 namespace Shared;
 
-public partial class nav_mesh_2d_seeker : CharacterBody2D
+public partial class NavMesh2DSeeker : CharacterBody2D
 {
 	[Export] public Array<Node2D> Targets;
 	
