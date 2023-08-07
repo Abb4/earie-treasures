@@ -1,0 +1,17 @@
+D:\pprojects\earie-treasures-fixed\.godot\mono\temp\bin\Debug\Earie Treasures.deps.json
+D:\pprojects\earie-treasures-fixed\.godot\mono\temp\bin\Debug\Earie Treasures.runtimeconfig.json
+D:\pprojects\earie-treasures-fixed\.godot\mono\temp\bin\Debug\Earie Treasures.dll
+D:\pprojects\earie-treasures-fixed\.godot\mono\temp\bin\Debug\Earie Treasures.pdb
+D:\pprojects\earie-treasures-fixed\.godot\mono\temp\bin\Debug\GodotSharp.dll
+D:\pprojects\earie-treasures-fixed\.godot\mono\temp\bin\Debug\GodotSharpEditor.dll
+D:\pprojects\earie-treasures-fixed\.godot\mono\temp\obj\Debug\Earie Treasures.csproj.AssemblyReference.cache
+D:\pprojects\earie-treasures-fixed\.godot\mono\temp\obj\Debug\Earie Treasures.GeneratedMSBuildEditorConfig.editorconfig
+D:\pprojects\earie-treasures-fixed\.godot\mono\temp\obj\Debug\Earie Treasures.AssemblyInfoInputs.cache
+D:\pprojects\earie-treasures-fixed\.godot\mono\temp\obj\Debug\Earie Treasures.AssemblyInfo.cs
+D:\pprojects\earie-treasures-fixed\.godot\mono\temp\obj\Debug\Earie Treasures.csproj.CoreCompileInputs.cache
+D:\pprojects\earie-treasures-fixed\.godot\mono\temp\obj\Debug\Earie Treasures.csproj.CopyComplete
+D:\pprojects\earie-treasures-fixed\.godot\mono\temp\obj\Debug\Earie Treasures.dll
+D:\pprojects\earie-treasures-fixed\.godot\mono\temp\obj\Debug\refint\Earie Treasures.dll
+D:\pprojects\earie-treasures-fixed\.godot\mono\temp\obj\Debug\Earie Treasures.pdb
+D:\pprojects\earie-treasures-fixed\.godot\mono\temp\obj\Debug\Earie Treasures.genruntimeconfig.cache
+D:\pprojects\earie-treasures-fixed\.godot\mono\temp\obj\Debug\ref\Earie Treasures.dll
