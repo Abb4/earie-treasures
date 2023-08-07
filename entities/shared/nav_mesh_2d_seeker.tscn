@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://crupla8b4exdv"]
 
-[ext_resource type="Script" path="res://entities/shared/nav_mesh_2d_seeker.cs" id="1_j5ea6"]
+[ext_resource type="Script" path="res://entities/shared/NavMesh2DSeeker.cs" id="1_1fhc6"]
 [ext_resource type="Texture2D" uid="uid://wjwfy0e7jfxb" path="res://icon.svg" id="1_wiouv"]
 [ext_resource type="Script" path="res://entities/shared/NavigateTowards2dNodes.cs" id="2_gkywp"]
 
@@ -20,7 +20,7 @@ animations = [{
 
 [node name="NavMesh2DSeeker" type="CharacterBody2D" node_paths=PackedStringArray("Targets", "navigationComponent")]
 z_index = 1
-script = ExtResource("1_j5ea6")
+script = ExtResource("1_1fhc6")
 Targets = []
 navigationComponent = NodePath("NavigateTowards2dNodes")
 
