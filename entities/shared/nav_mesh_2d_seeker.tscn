@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://crupla8b4exdv"]
 
-[ext_resource type="Script" path="res://entities/shared/NavMesh2DSeeker.cs" id="1_1fhc6"]
+[ext_resource type="Script" path="res://entities/shared/NavMesh2DSeeker.cs" id="1_okc87"]
+[ext_resource type="Script" path="res://entities/shared/NavigateTowards2dNodes.cs" id="1_v72mj"]
 [ext_resource type="Texture2D" uid="uid://wjwfy0e7jfxb" path="res://icon.svg" id="1_wiouv"]
-[ext_resource type="Script" path="res://entities/shared/NavigateTowards2dNodes.cs" id="2_gkywp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okq0l"]
 size = Vector2(64, 64)
@@ -18,11 +18,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="NavMesh2DSeeker" type="CharacterBody2D" node_paths=PackedStringArray("Targets", "navigationComponent")]
+[node name="NavMesh2DSeeker" type="CharacterBody2D" node_paths=PackedStringArray("Targets")]
 z_index = 1
-script = ExtResource("1_1fhc6")
+script = ExtResource("1_okc87")
 Targets = []
-navigationComponent = NodePath("NavigateTowards2dNodes")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 80.0
@@ -30,7 +29,7 @@ target_desired_distance = 80.0
 debug_enabled = true
 
 [node name="NavigateTowards2dNodes" type="Node" parent="." node_paths=PackedStringArray("Parent", "NavigationAgent2D", "Targets")]
-script = ExtResource("2_gkywp")
+script = ExtResource("1_v72mj")
 Parent = NodePath("..")
 NavigationAgent2D = NodePath("../NavigationAgent2D")
 Targets = []

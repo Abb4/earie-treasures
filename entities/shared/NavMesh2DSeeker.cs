@@ -1,6 +1,8 @@
 using Godot;
 using Godot.Collections;
 
+using utilities;
+
 namespace Shared;
 
 public partial class NavMesh2DSeeker : CharacterBody2D
@@ -11,12 +13,13 @@ public partial class NavMesh2DSeeker : CharacterBody2D
 
 	[Export] public int MovementSpeed = 100;
 	
-	[Export] public NavigateTowards2dNodes navigationComponent;
-	
 	public override void _Ready()
 	{
-		navigationComponent.Targets = Targets;		
-		navigationComponent.MovementSpeed = MovementSpeed;		
-		navigationComponent.StopAfterLastTargetReached = StopAfterLastTargetReached;		
+		if(this.TryFindNodeInChildrenRecursively<NavigateTowards2dNodes>(out var navigationComponent))
+		{
+			navigationComponent.Targets = Targets;
+			navigationComponent.MovementSpeed = MovementSpeed;
+			navigationComponent.StopAfterLastTargetReached = StopAfterLastTargetReached;
+		}
 	}
 }
