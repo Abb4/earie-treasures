@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://crupla8b4exdv"]
+[gd_scene load_steps=7 format=3 uid="uid://crupla8b4exdv"]
 
 [ext_resource type="Script" path="res://entities/shared/NavMesh2DSeeker.cs" id="1_okc87"]
 [ext_resource type="Script" path="res://entities/shared/NavigateTowards2dNodes.cs" id="1_v72mj"]
 [ext_resource type="Texture2D" uid="uid://wjwfy0e7jfxb" path="res://icon.svg" id="1_wiouv"]
+[ext_resource type="Script" path="res://entities/shared/NavigateTowards2dNodes.cs" id="2_gkywp"]
+[ext_resource type="Texture2D" uid="uid://ctc4l4hk6ujq8" path="res://assets/neutral_point_light.webp" id="4_jv2rv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okq0l"]
 size = Vector2(64, 64)
@@ -42,3 +44,9 @@ modulate = Color(0.839216, 0, 0.313726, 1)
 z_index = 1
 scale = Vector2(0.492, 0.5)
 sprite_frames = SubResource("SpriteFrames_72851")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.45
+shadow_enabled = true
+texture = ExtResource("4_jv2rv")
+texture_scale = 1.47
