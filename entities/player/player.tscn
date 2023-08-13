@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://wjwfy0e7jfxb" path="res://icon.svg" id="2_sdyld"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okq0l"]
-size = Vector2(64, 64)
+size = Vector2(32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_72851"]
 animations = [{
@@ -30,7 +30,8 @@ texture = ExtResource("1_7j0y3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_72851")
 
 [node name="Topdown2dKeyboardControl" parent="." instance=ExtResource("2_360xr")]
+MovementSpeed = 300
