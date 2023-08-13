@@ -25,9 +25,13 @@ script = ExtResource("1_okc87")
 Targets = []
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 35.0
+path_desired_distance = 30.0
 target_desired_distance = 70.0
 path_max_distance = 70.0
+avoidance_enabled = true
+neighbor_distance = 100.0
+time_horizon_agents = 4.0
+time_horizon_obstacles = 4.0
 debug_enabled = true
 
 [node name="NavigateTowards2dNodes" type="Node" parent="." node_paths=PackedStringArray("Parent", "NavigationAgent2D", "Targets")]

@@ -35,3 +35,6 @@ sprite_frames = SubResource("SpriteFrames_72851")
 
 [node name="Topdown2dKeyboardControl" parent="." instance=ExtResource("2_360xr")]
 MovementSpeed = 300
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+radius = 22.57
