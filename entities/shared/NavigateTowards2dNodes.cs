@@ -1,4 +1,3 @@
-using System.Linq;
 using Godot;
 using Godot.Collections;
 using utilities;
@@ -30,7 +29,10 @@ public partial class NavigateTowards2dNodes : Node
 	{
 		Parent = this.FindParentNodeIfNotSet(Parent);
 		
-		Parent.TryFindNodeInChildrenRecursively(out NavigationAgent2D);
+		if(Parent.TryFindNodeInChildrenRecursively(out NavigationAgent2D))
+		{
+			NavigationAgent2D.VelocityComputed += OnSafeVelocityComputed;
+		}
 		
 		// Make sure to not await during _Ready.
 		// see more: https://docs.godotengine.org/en/stable/tutorials/navigation/navigation_introduction_2d.html#setup-for-2d-scene
@@ -95,11 +97,29 @@ public partial class NavigateTowards2dNodes : Node
 
 				Vector2 newVelocity = (nextPathPosition - currentAgentPosition).Normalized();
 				newVelocity *= MovementSpeed;
-
-				Parent.Velocity = newVelocity;
-
-				Parent.MoveAndSlide();
+				
+				if(NavigationAgent2D.AvoidanceEnabled)
+				{
+					// moving with NavigationAgent avoidance requires different handling
+					NavigationAgent2D.Velocity = newVelocity;
+				}
+				else
+				{
+					// without avoidance simply move Parent
+					MoveParent(newVelocity);
+				}
 			}
 		}
+	}
+	
+	private void OnSafeVelocityComputed(Vector2 safeVelocity)
+	{
+		MoveParent(safeVelocity);
+	}
+	
+	private void MoveParent(Vector2 velocity)
+	{
+		Parent.Velocity = velocity;
+		Parent.MoveAndSlide();
 	}
 }

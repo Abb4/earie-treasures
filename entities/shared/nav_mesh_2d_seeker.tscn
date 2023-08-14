@@ -1,11 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://crupla8b4exdv"]
+[gd_scene load_steps=7 format=3 uid="uid://crupla8b4exdv"]
 
 [ext_resource type="Script" path="res://entities/shared/NavMesh2DSeeker.cs" id="1_okc87"]
 [ext_resource type="Script" path="res://entities/shared/NavigateTowards2dNodes.cs" id="1_v72mj"]
 [ext_resource type="Texture2D" uid="uid://wjwfy0e7jfxb" path="res://icon.svg" id="1_wiouv"]
+[ext_resource type="Texture2D" uid="uid://ctc4l4hk6ujq8" path="res://assets/neutral_point_light.webp" id="4_jv2rv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okq0l"]
-size = Vector2(64, 64)
+size = Vector2(32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_72851"]
 animations = [{
@@ -24,8 +25,13 @@ script = ExtResource("1_okc87")
 Targets = []
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 80.0
-target_desired_distance = 80.0
+path_desired_distance = 30.0
+target_desired_distance = 70.0
+path_max_distance = 70.0
+avoidance_enabled = true
+neighbor_distance = 100.0
+time_horizon_agents = 4.0
+time_horizon_obstacles = 4.0
 debug_enabled = true
 
 [node name="NavigateTowards2dNodes" type="Node" parent="." node_paths=PackedStringArray("Parent", "NavigationAgent2D", "Targets")]
@@ -40,5 +46,11 @@ shape = SubResource("RectangleShape2D_okq0l")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.839216, 0, 0.313726, 1)
 z_index = 1
-scale = Vector2(0.492, 0.5)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_72851")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.45
+shadow_enabled = true
+texture = ExtResource("4_jv2rv")
+texture_scale = 1.47
