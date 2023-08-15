@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://wjwfy0e7jfxb" path="res://icon.svg" id="1_wiouv"]
 [ext_resource type="Texture2D" uid="uid://ctc4l4hk6ujq8" path="res://assets/neutral_point_light.webp" id="4_jv2rv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_okq0l"]
-size = Vector2(32, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tv5t7"]
+size = Vector2(64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_72851"]
 animations = [{
@@ -25,11 +25,12 @@ script = ExtResource("1_okc87")
 Targets = []
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 30.0
-target_desired_distance = 70.0
-path_max_distance = 70.0
+path_desired_distance = 50.0
+target_desired_distance = 140.0
+path_max_distance = 140.0
 avoidance_enabled = true
-neighbor_distance = 100.0
+radius = 20.0
+neighbor_distance = 200.0
 time_horizon_agents = 4.0
 time_horizon_obstacles = 4.0
 debug_enabled = true
@@ -39,18 +40,19 @@ script = ExtResource("1_v72mj")
 Parent = NodePath("..")
 NavigationAgent2D = NodePath("../NavigationAgent2D")
 Targets = []
+MovementSpeed = 200
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_okq0l")
+shape = SubResource("RectangleShape2D_tv5t7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.839216, 0, 0.313726, 1)
 z_index = 1
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_72851")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 0.45
 shadow_enabled = true
 texture = ExtResource("4_jv2rv")
-texture_scale = 1.47
+texture_scale = 3.0

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://wjwfy0e7jfxb" path="res://icon.svg" id="2_sdyld"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okq0l"]
-size = Vector2(32, 32)
+size = Vector2(64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_72851"]
 animations = [{
@@ -26,17 +26,19 @@ shape = SubResource("RectangleShape2D_okq0l")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 0.5
+shadow_enabled = true
 texture = ExtResource("1_7j0y3")
+texture_scale = 2.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_72851")
 
 [node name="Topdown2dKeyboardControl" parent="." instance=ExtResource("2_360xr")]
 MovementSpeed = 300
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
-radius = 22.57
+radius = 45.14
 
 [node name="Camera2D" type="Camera2D" parent="."]

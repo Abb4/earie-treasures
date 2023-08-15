@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbpdvklolmpph"
-path="res://.godot/imported/kenney_scribbledungeons_tilesheet.png-d6d721d1b3dd1064f67713f7ad14eca1.ctex"
+uid="uid://ci2hnkv2hjirt"
+path="res://.godot/imported/kenney_scribbledungeons_tilesheet_128px.png-18da5a7b93e340c2676225467d75fba4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/kenney_scribbledungeons/kenney_scribbledungeons_tilesheet.png"
-dest_files=["res://.godot/imported/kenney_scribbledungeons_tilesheet.png-d6d721d1b3dd1064f67713f7ad14eca1.ctex"]
+source_file="res://assets/tilesets/kenney_scribbledungeons/kenney_scribbledungeons_tilesheet_128px.png"
+dest_files=["res://.godot/imported/kenney_scribbledungeons_tilesheet_128px.png-18da5a7b93e340c2676225467d75fba4.ctex"]
 
 [params]
 
