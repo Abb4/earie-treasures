@@ -5,8 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://crupla8b4exdv" path="res://entities/shared/nav_mesh_2d_seeker.tscn" id="3_07uax"]
 
 [node name="SandboxLevel" type="Node2D"]
-metadata/_edit_horizontal_guides_ = [-3.0, 19.0, 120.0, 120.0]
-metadata/_edit_vertical_guides_ = [480.0, 457.0]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_ir1kw")
