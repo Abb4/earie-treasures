@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2pi30m0fctkv"]
+
+[ext_resource type="Script" path="res://entities/shared/MouseConfineOnStart.cs" id="1_emqat"]
+
+[node name="MouseConfineOnStart" type="Node"]
+script = ExtResource("1_emqat")
