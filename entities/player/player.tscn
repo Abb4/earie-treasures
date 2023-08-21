@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ctc4l4hk6ujq8" path="res://assets/neutral_point_light.webp" id="1_7j0y3"]
 [ext_resource type="PackedScene" uid="uid://bin3is2cu0rvr" path="res://entities/shared/controls/topdown_2d_keyboard_control.tscn" id="2_360xr"]
-[ext_resource type="Texture2D" path="res://assets/flash_light.png" id="2_2870t"]
+[ext_resource type="Texture2D" uid="uid://dcryacuryldgv" path="res://assets/flash_light.png" id="2_2870t"]
 [ext_resource type="Texture2D" uid="uid://wjwfy0e7jfxb" path="res://icon.svg" id="2_sdyld"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okq0l"]
@@ -37,11 +37,10 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_72851")
 
 [node name="FlashLight" type="PointLight2D" parent="."]
-scale = Vector2(1, 1.3)
 energy = 0.4
 shadow_enabled = true
 texture = ExtResource("2_2870t")
-offset = Vector2(0, -220)
+offset = Vector2(220, 0)
 texture_scale = 1.6
 
 [node name="Topdown2dKeyboardControl" parent="." instance=ExtResource("2_360xr")]
