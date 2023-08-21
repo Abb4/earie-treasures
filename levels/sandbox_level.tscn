@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmxphl6c67pns"]
+[gd_scene load_steps=6 format=3 uid="uid://bmxphl6c67pns"]
 
+[ext_resource type="Script" path="res://entities/shared/KeyboardToggleMouseCapture.cs" id="1_4vjy5"]
+[ext_resource type="PackedScene" uid="uid://d260ufomppgb0" path="res://entities/shared/mouse_capture_on_start.tscn" id="1_refh2"]
 [ext_resource type="TileSet" uid="uid://yyt201a3jcf2" path="res://assets/tilesets/kenney_scribbledungeons/kenney_scribbledungeons.tres" id="2_ir1kw"]
 [ext_resource type="PackedScene" uid="uid://dky0yxg0pgbok" path="res://entities/player/player.tscn" id="2_khlfx"]
 [ext_resource type="PackedScene" uid="uid://crupla8b4exdv" path="res://entities/shared/nav_mesh_2d_seeker.tscn" id="3_07uax"]
 
 [node name="SandboxLevel" type="Node2D"]
+
+[node name="KeyboardToggleMouseCapture" type="Node" parent="."]
+script = ExtResource("1_4vjy5")
+
+[node name="MouseCaptureOnStart" parent="." instance=ExtResource("1_refh2")]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_ir1kw")
