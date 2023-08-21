@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://crupla8b4exdv"]
+[gd_scene load_steps=8 format=3 uid="uid://crupla8b4exdv"]
 
 [ext_resource type="Script" path="res://entities/shared/NavMesh2DSeeker.cs" id="1_okc87"]
 [ext_resource type="Script" path="res://entities/shared/NavigateTowards2dNodes.cs" id="1_v72mj"]
 [ext_resource type="Texture2D" uid="uid://wjwfy0e7jfxb" path="res://icon.svg" id="1_wiouv"]
+[ext_resource type="PackedScene" uid="uid://dryxji2dl6v3p" path="res://entities/64_px_navigation_agent_2d.tscn" id="2_rcndb"]
 [ext_resource type="Texture2D" uid="uid://ctc4l4hk6ujq8" path="res://assets/neutral_point_light.webp" id="4_jv2rv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tv5t7"]
@@ -24,23 +25,13 @@ z_index = 1
 script = ExtResource("1_okc87")
 Targets = []
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 50.0
-target_desired_distance = 140.0
-path_max_distance = 140.0
-avoidance_enabled = true
-radius = 20.0
-neighbor_distance = 200.0
-time_horizon_agents = 4.0
-time_horizon_obstacles = 4.0
-debug_enabled = true
+[node name="64px_NavigationAgent2D" parent="." instance=ExtResource("2_rcndb")]
+avoidance_enabled = false
 
-[node name="NavigateTowards2dNodes" type="Node" parent="." node_paths=PackedStringArray("Parent", "NavigationAgent2D", "Targets")]
+[node name="NavigateTowards2dNodes" type="Node" parent="." node_paths=PackedStringArray("Parent", "Targets")]
 script = ExtResource("1_v72mj")
 Parent = NodePath("..")
-NavigationAgent2D = NodePath("../NavigationAgent2D")
 Targets = []
-MovementSpeed = 200
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tv5t7")

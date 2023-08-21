@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dryxji2dl6v3p"]
+
+[node name="64px_NavigationAgent2D" type="NavigationAgent2D"]
+editor_description = "A Navigation Agent designed for 64px collision bbox navigation"
+path_desired_distance = 35.0
+target_desired_distance = 140.0
+path_max_distance = 140.0
+avoidance_enabled = true
+radius = 20.0
+neighbor_distance = 200.0
+time_horizon_agents = 4.0
+time_horizon_obstacles = 4.0
+debug_enabled = true
