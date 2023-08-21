@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://t0n35xldr67k"]
+
+[ext_resource type="Script" path="res://entities/shared/RotateTowardsMousePosition.cs" id="1_ixrcr"]
+
+[node name="RotateTowardsMousePosition" type="Node"]
+script = ExtResource("1_ixrcr")

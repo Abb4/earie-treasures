@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d260ufomppgb0"]
+
+[ext_resource type="Script" path="res://entities/shared/MouseCaptureOnStart.cs" id="1_650ad"]
+
+[node name="MouseCaptureOnStart" type="Node"]
+script = ExtResource("1_650ad")

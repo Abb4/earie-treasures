@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpj5yakqs4ewv"]
+
+[ext_resource type="Script" path="res://entities/shared/KeyboardToggleMouseCapture.cs" id="1_v6e6q"]
+
+[node name="KeyboardToggleMouseCapture" type="Node"]
+script = ExtResource("1_v6e6q")

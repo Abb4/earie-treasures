@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhjgy04nq6ynp"]
+
+[ext_resource type="Script" path="res://entities/shared/KeyboardToggleMouseConfine.cs" id="1_gcc1a"]
+
+[node name="KeyboardToggleMouseConfine" type="Node"]
+script = ExtResource("1_gcc1a")
