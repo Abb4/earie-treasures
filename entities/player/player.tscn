@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dky0yxg0pgbok"]
+[gd_scene load_steps=8 format=3 uid="uid://dky0yxg0pgbok"]
 
 [ext_resource type="Texture2D" uid="uid://ctc4l4hk6ujq8" path="res://assets/neutral_point_light.webp" id="1_7j0y3"]
 [ext_resource type="PackedScene" uid="uid://bin3is2cu0rvr" path="res://entities/shared/controls/topdown_2d_keyboard_control.tscn" id="2_360xr"]
 [ext_resource type="Texture2D" uid="uid://dcryacuryldgv" path="res://assets/flash_light.png" id="2_2870t"]
 [ext_resource type="Texture2D" uid="uid://wjwfy0e7jfxb" path="res://icon.svg" id="2_sdyld"]
+[ext_resource type="PackedScene" uid="uid://t0n35xldr67k" path="res://entities/shared/rotate_towards_mouse_position.tscn" id="4_4o5j7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okq0l"]
 size = Vector2(64, 64)
@@ -42,6 +43,9 @@ shadow_enabled = true
 texture = ExtResource("2_2870t")
 offset = Vector2(220, 0)
 texture_scale = 1.6
+
+[node name="RotateTowardsMousePosition" parent="FlashLight" node_paths=PackedStringArray("Parent") instance=ExtResource("4_4o5j7")]
+Parent = NodePath("..")
 
 [node name="Topdown2dKeyboardControl" parent="." instance=ExtResource("2_360xr")]
 MovementSpeed = 300
