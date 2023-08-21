@@ -10,7 +10,7 @@ public partial class MouseCaptureOnStart : Node
 
     public override void _Input(InputEvent inputEvent)
     {
-        if(!_activated)
+        if (!_activated)
         {
             InputExtensions.CaptureMouse();
             _activated = true;
