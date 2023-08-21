@@ -27,10 +27,10 @@ z_index = 1
 shape = SubResource("RectangleShape2D_okq0l")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-energy = 0.5
+energy = 0.4
 shadow_enabled = true
 texture = ExtResource("1_7j0y3")
-texture_scale = 2.0
+texture_scale = 0.7
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
@@ -38,7 +38,8 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_72851")
 
 [node name="FlashLight" type="PointLight2D" parent="."]
-energy = 0.4
+scale = Vector2(1.7, 0.8)
+energy = 0.2
 shadow_enabled = true
 texture = ExtResource("2_2870t")
 offset = Vector2(220, 0)
