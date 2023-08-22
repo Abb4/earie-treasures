@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=35 format=3 uid="uid://yyt201a3jcf2"]
 
-[ext_resource type="Texture2D" uid="uid://ci2hnkv2hjirt" path="res://assets/tilesets/kenney_scribbledungeons/kenney_scribbledungeons_tilesheet_128px.png" id="1_rvqmi"]
+[ext_resource type="Texture2D" path="res://assets/tilesets/kenney_scribbledungeons/kenney_scribbledungeons_tilesheet_128px.png" id="1_rvqmi"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_xrj4n"]
 vertices = PackedVector2Array(-25.7143, -60, 25.7143, -60, 60, -25.7143, 60, 25.7143, 25.7143, 60, -25.7143, 60, -60, 25.7143, -60, -25.7143)
