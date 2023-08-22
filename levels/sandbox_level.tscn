@@ -23,22 +23,25 @@ layer_0/tile_data = PackedInt32Array(0, 0, 1, 65536, 0, 1, 65537, 0, 1, 65538, 0
 [node name="Player" parent="." instance=ExtResource("2_khlfx")]
 position = Vector2(832, 424)
 
-[node name="Waypoint0" type="Node2D" parent="."]
+[node name="Waypoint1" type="Node2D" parent="."]
 position = Vector2(90, 663)
 
-[node name="Waypoint1" type="Node2D" parent="."]
+[node name="Waypoint2" type="Node2D" parent="."]
 position = Vector2(210, 925)
 
-[node name="Waypoint2" type="Node2D" parent="."]
-position = Vector2(592, 960)
-
 [node name="Waypoint3" type="Node2D" parent="."]
-position = Vector2(896, 776)
+position = Vector2(526, 284)
 
 [node name="Waypoint4" type="Node2D" parent="."]
-position = Vector2(1024, 896)
+position = Vector2(592, 960)
 
 [node name="Waypoint5" type="Node2D" parent="."]
+position = Vector2(896, 776)
+
+[node name="Waypoint6" type="Node2D" parent="."]
+position = Vector2(1024, 896)
+
+[node name="Waypoint7" type="Node2D" parent="."]
 position = Vector2(1144, 1016)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
@@ -46,6 +49,6 @@ color = Color(0.662745, 0.662745, 0.662745, 1)
 
 [node name="NavMesh2DSeeker" parent="." node_paths=PackedStringArray("Targets") instance=ExtResource("3_07uax")]
 position = Vector2(-8, 530)
-Targets = [NodePath("../Waypoint0"), NodePath("../Waypoint1"), NodePath("../Waypoint2"), NodePath("../Waypoint3"), NodePath("../Waypoint4"), NodePath("../Waypoint5")]
+Targets = [NodePath("../Player"), NodePath("../Waypoint1"), NodePath("../Waypoint2"), NodePath("../Waypoint3"), NodePath("../Waypoint4"), NodePath("../Waypoint5"), NodePath("../Waypoint6"), NodePath("../Waypoint7")]
 StopAfterLastTargetReached = false
 MovementSpeed = 200
