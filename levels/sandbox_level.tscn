@@ -51,4 +51,4 @@ color = Color(0.662745, 0.662745, 0.662745, 1)
 position = Vector2(-8, 530)
 Targets = [NodePath("../Player"), NodePath("../Waypoint1"), NodePath("../Waypoint2"), NodePath("../Waypoint3"), NodePath("../Waypoint4"), NodePath("../Waypoint5"), NodePath("../Waypoint6"), NodePath("../Waypoint7")]
 StopAfterLastTargetReached = false
-MovementSpeed = 200
+MovementSpeed = 300
