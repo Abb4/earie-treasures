@@ -6,9 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dryxji2dl6v3p" path="res://entities/64_px_navigation_agent_2d.tscn" id="2_rcndb"]
 [ext_resource type="Texture2D" uid="uid://ctc4l4hk6ujq8" path="res://assets/neutral_point_light.webp" id="4_jv2rv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tv5t7"]
-size = Vector2(64, 64)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_72851"]
 animations = [{
 "frames": [{
@@ -20,8 +17,13 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h22uu"]
+size = Vector2(64, 64)
+
 [node name="NavMesh2DSeeker" type="CharacterBody2D" node_paths=PackedStringArray("Targets")]
 z_index = 1
+collision_layer = 256
+collision_mask = 0
 script = ExtResource("1_okc87")
 Targets = []
 
@@ -32,9 +34,6 @@ avoidance_enabled = false
 script = ExtResource("1_v72mj")
 Parent = NodePath("..")
 Targets = []
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_tv5t7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.839216, 0, 0.313726, 1)
@@ -47,3 +46,6 @@ energy = 0.45
 shadow_enabled = true
 texture = ExtResource("4_jv2rv")
 texture_scale = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_h22uu")
