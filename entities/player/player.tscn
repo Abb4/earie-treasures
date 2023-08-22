@@ -52,7 +52,4 @@ Parent = NodePath("..")
 [node name="Topdown2dKeyboardControl" parent="." instance=ExtResource("2_360xr")]
 MovementSpeed = 300
 
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
-radius = 45.14
-
 [node name="Camera2D" type="Camera2D" parent="."]
