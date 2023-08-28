@@ -59,7 +59,6 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_72851")
 
 [node name="FlashLight" type="PointLight2D" parent="Player"]
-scale = Vector2(1.7, 0.8)
 energy = 0.2
 shadow_enabled = true
 texture = ExtResource("6_c3jjh")
@@ -72,7 +71,7 @@ Parent = NodePath("..")
 [node name="Arc" type="Node2D" parent="Player/FlashLight" node_paths=PackedStringArray("Target")]
 script = ExtResource("5_fmkd0")
 ArcWidthDeg = 120
-Target = NodePath("../../../Waypoint3")
+Target = NodePath("../../../Waypoint3/Sprite2D")
 
 [node name="Topdown2dKeyboardControl" parent="Player" instance=ExtResource("9_dq31a")]
 MovementSpeed = 300

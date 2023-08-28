@@ -5,7 +5,7 @@ using utilities;
 
 namespace Shared.Tools;
 
-[Tool]
+//[Tool] //TODO readd?
 public partial class VisionRange2d : Node2D
 {
     [Export] public int ArcWidthDeg = 60;
@@ -32,6 +32,8 @@ public partial class VisionRange2d : Node2D
         var center = new Vector2(0, 0);
         float radius = 300;
 
+        ArcWidthDeg = 120; // TODO remove debug code
+
         float width = DegToRad(ArcWidthDeg / 2);
 
         float angleFrom = -width;
@@ -39,7 +41,7 @@ public partial class VisionRange2d : Node2D
 
         var color = new Color(1, 0, 0);
 
-        DrawArc(center, radius, angleFrom, angleTo, 20, color);
+        DrawArc(center, radius, angleFrom, angleTo, 10, color);
 
         float anglePoint = angleFrom;
         var p1 = new Vector2(Cos(anglePoint), Sin(anglePoint)) * radius;
@@ -56,26 +58,26 @@ public partial class VisionRange2d : Node2D
 
             var targetPosition = Target.GlobalPosition;
 
-            var localTargetPosition = this.ToLocal(targetPosition) ;
+            var localTargetPosition = this.ToLocal(targetPosition);
 
-            var mouseAngle = this.GlobalPosition.AngleToPoint(targetPosition);
+            var targetAngle = this.GlobalPosition.AngleToPoint(targetPosition);
 
-            //var difference = Abs(mouseAngle - this.GlobalRotation);
+            var mouseAngleDeg = (this.GlobalRotationDegrees);
+            var targetAngleDeg = RadToDeg(targetAngle);
 
-            var a = RadToDeg(mouseAngle) + 180;
-            var b = (this.GlobalRotationDegrees + 180);
 
-            GD.Print(a);
-            GD.Print(b);
+            var difference = Abs(targetAngleDeg - mouseAngleDeg);
 
-            var difference = Abs(a - b);
+            if(difference > 300) difference = Abs(difference-360);
 
             var degWidth = RadToDeg(width);
 
-            GD.Print(difference);
-            GD.Print(degWidth);
+            var targetDifference = degWidth;
 
-            if (difference < degWidth) // target is within arc
+            GD.Print($"difference: {difference}");
+            GD.Print($"tar difference: {targetDifference}");
+
+            if (difference < targetDifference) // target is within arc
             {
                 enemyLineColor = Colors.Green;
             }
