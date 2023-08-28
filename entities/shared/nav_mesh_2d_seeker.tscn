@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://entities/shared/NavMesh2DSeeker.cs" id="1_okc87"]
 [ext_resource type="Script" path="res://entities/shared/NavigateTowards2dNodes.cs" id="1_v72mj"]
 [ext_resource type="Texture2D" uid="uid://wjwfy0e7jfxb" path="res://icon.svg" id="1_wiouv"]
-[ext_resource type="PackedScene" path="res://entities/64_px_navigation_agent_2d.tscn" id="2_rcndb"]
-[ext_resource type="Texture2D" path="res://assets/neutral_point_light.webp" id="4_jv2rv"]
+[ext_resource type="PackedScene" uid="uid://dryxji2dl6v3p" path="res://entities/64_px_navigation_agent_2d.tscn" id="2_rcndb"]
+[ext_resource type="Texture2D" uid="uid://ctc4l4hk6ujq8" path="res://assets/neutral_point_light.webp" id="4_jv2rv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_72851"]
 animations = [{
