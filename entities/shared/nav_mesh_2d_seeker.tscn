@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dryxji2dl6v3p" path="res://entities/64_px_navigation_agent_2d.tscn" id="2_rcndb"]
 [ext_resource type="Texture2D" uid="uid://ctc4l4hk6ujq8" path="res://assets/neutral_point_light.webp" id="4_jv2rv"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_72851"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_46frp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -40,7 +40,7 @@ Targets = []
 modulate = Color(0.839216, 0, 0.313726, 1)
 z_index = 1
 scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_72851")
+sprite_frames = SubResource("SpriteFrames_46frp")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 0.45

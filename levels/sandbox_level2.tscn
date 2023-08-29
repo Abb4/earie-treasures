@@ -1,20 +1,58 @@
-[gd_scene load_steps=23 format=3 uid="uid://bmxphl6c67pns"]
+[gd_scene load_steps=24 format=3 uid="uid://ctvr07rcp0jh6"]
 
-[ext_resource type="PackedScene" uid="uid://c2pi30m0fctkv" path="res://entities/shared/mouse_confine_on_start.tscn" id="1_3qcfy"]
-[ext_resource type="Script" path="res://levels/AutoplayAnimation.cs" id="1_iv32r"]
-[ext_resource type="PackedScene" uid="uid://bhjgy04nq6ynp" path="res://entities/shared/keyboard_toggle_mouse_confine.tscn" id="2_6atum"]
-[ext_resource type="TileSet" uid="uid://yyt201a3jcf2" path="res://assets/tilesets/kenney_scribbledungeons/kenney_scribbledungeons.tres" id="2_ir1kw"]
-[ext_resource type="PackedScene" uid="uid://crupla8b4exdv" path="res://entities/shared/nav_mesh_2d_seeker.tscn" id="3_07uax"]
-[ext_resource type="Texture2D" uid="uid://ctc4l4hk6ujq8" path="res://assets/neutral_point_light.webp" id="4_pslln"]
-[ext_resource type="Texture2D" uid="uid://wjwfy0e7jfxb" path="res://icon.svg" id="5_8cyt7"]
-[ext_resource type="Script" path="res://entities/shared/tools/VisionRange2d.cs" id="5_fmkd0"]
-[ext_resource type="Texture2D" uid="uid://dcryacuryldgv" path="res://assets/flash_light.png" id="6_c3jjh"]
-[ext_resource type="PackedScene" uid="uid://t0n35xldr67k" path="res://entities/shared/rotate_towards_mouse_position.tscn" id="7_haf4w"]
-[ext_resource type="PackedScene" uid="uid://bin3is2cu0rvr" path="res://entities/shared/controls/topdown_2d_keyboard_control.tscn" id="9_dq31a"]
-[ext_resource type="Script" path="res://entities/shared/NavMesh2DSeeker.cs" id="10_s0q41"]
-[ext_resource type="Script" path="res://levels/VisualizeRayCast2D.cs" id="10_sfkqe"]
-[ext_resource type="PackedScene" uid="uid://dryxji2dl6v3p" path="res://entities/64_px_navigation_agent_2d.tscn" id="11_fa61u"]
-[ext_resource type="Script" path="res://entities/shared/NavigateTowards2dNodes.cs" id="12_6doq8"]
+[ext_resource type="Script" path="res://levels/AutoplayAnimation.cs" id="1_no0hp"]
+[ext_resource type="PackedScene" uid="uid://c2pi30m0fctkv" path="res://entities/shared/mouse_confine_on_start.tscn" id="2_khnh2"]
+[ext_resource type="PackedScene" uid="uid://bhjgy04nq6ynp" path="res://entities/shared/keyboard_toggle_mouse_confine.tscn" id="3_hhgx6"]
+[ext_resource type="TileSet" uid="uid://yyt201a3jcf2" path="res://assets/tilesets/kenney_scribbledungeons/kenney_scribbledungeons.tres" id="4_p521f"]
+[ext_resource type="Texture2D" uid="uid://ctc4l4hk6ujq8" path="res://assets/neutral_point_light.webp" id="5_4gfyj"]
+[ext_resource type="Texture2D" uid="uid://wjwfy0e7jfxb" path="res://icon.svg" id="6_2jlcu"]
+[ext_resource type="Script" path="res://levels/VisualizeRayCast2D.cs" id="7_iws07"]
+[ext_resource type="PackedScene" uid="uid://t0n35xldr67k" path="res://entities/shared/rotate_towards_mouse_position.tscn" id="8_c1ymg"]
+[ext_resource type="Texture2D" uid="uid://dcryacuryldgv" path="res://assets/flash_light.png" id="9_7n1xv"]
+[ext_resource type="PackedScene" uid="uid://bin3is2cu0rvr" path="res://entities/shared/controls/topdown_2d_keyboard_control.tscn" id="10_m2blo"]
+[ext_resource type="PackedScene" uid="uid://crupla8b4exdv" path="res://entities/shared/nav_mesh_2d_seeker.tscn" id="11_bft7i"]
+[ext_resource type="Script" path="res://entities/shared/NavMesh2DSeeker.cs" id="12_82j25"]
+[ext_resource type="PackedScene" uid="uid://dryxji2dl6v3p" path="res://entities/64_px_navigation_agent_2d.tscn" id="13_gscaa"]
+[ext_resource type="Script" path="res://entities/shared/NavigateTowards2dNodes.cs" id="14_2oet7"]
+[ext_resource type="Script" path="res://entities/shared/tools/VisionRange2d.cs" id="15_6xctp"]
+
+[sub_resource type="Animation" id="Animation_61imu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(265, -66)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../NavMesh2DSeeker:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-4.05964]
+}
 
 [sub_resource type="Animation" id="Animation_h2hhw"]
 resource_name = "player_movement_demo"
@@ -44,35 +82,50 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 2.5, 3.4, 7.6, 9.1, 9.9, 12, 15.3, 17.1, 19.5)
 }
 
-[sub_resource type="Animation" id="Animation_61imu"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_l50ii"]
+resource_name = "enemy_turn"
+length = 10.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(1, 4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(265, -66)]
+"values": [1.0472, 1.5708]
 }
-tracks/1/type = "bezier"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
+tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(1, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(229, -157), Vector2(229, -157)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../NavMesh2DSeeker:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 4, 4.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-4.05964, -4.05964, -1.0472]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1jjlh"]
 _data = {
 "RESET": SubResource("Animation_61imu"),
+"enemy_turn": SubResource("Animation_l50ii"),
 "player_movement_demo": SubResource("Animation_h2hhw")
 }
 
@@ -83,7 +136,7 @@ size = Vector2(64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_8cyt7")
+"texture": ExtResource("6_2jlcu")
 }],
 "loop": true,
 "name": &"default",
@@ -94,7 +147,7 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_8cyt7")
+"texture": ExtResource("6_2jlcu")
 }],
 "loop": true,
 "name": &"default",
@@ -108,22 +161,21 @@ size = Vector2(64, 64)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Player")
-reset_on_save = false
 playback_process_mode = 0
 method_call_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_1jjlh")
 }
-script = ExtResource("1_iv32r")
-animationToAutoplay = "player_movement_demo"
+script = ExtResource("1_no0hp")
+animationToAutoplay = "enemy_turn"
 
-[node name="MouseConfineOnStart" parent="." instance=ExtResource("1_3qcfy")]
+[node name="MouseConfineOnStart" parent="." instance=ExtResource("2_khnh2")]
 
-[node name="KeyboardToggleMouseConfine" parent="." instance=ExtResource("2_6atum")]
+[node name="KeyboardToggleMouseConfine" parent="." instance=ExtResource("3_hhgx6")]
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-10, -33)
-tile_set = ExtResource("2_ir1kw")
+tile_set = ExtResource("4_p521f")
 format = 2
 layer_0/name = "ground and walls"
 layer_0/z_index = 1
@@ -141,7 +193,7 @@ shape = SubResource("RectangleShape2D_okq0l")
 visible = false
 energy = 0.4
 shadow_enabled = true
-texture = ExtResource("4_pslln")
+texture = ExtResource("5_4gfyj")
 texture_scale = 0.7
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
@@ -152,18 +204,21 @@ sprite_frames = SubResource("SpriteFrames_72851")
 [node name="FlashLight" type="Node2D" parent="Player"]
 
 [node name="RayCast2D" type="RayCast2D" parent="Player/FlashLight"]
+visible = false
 target_position = Vector2(292, -127)
-script = ExtResource("10_sfkqe")
+script = ExtResource("7_iws07")
 
 [node name="RayCast2D2" type="RayCast2D" parent="Player/FlashLight"]
+visible = false
 target_position = Vector2(424, 0)
-script = ExtResource("10_sfkqe")
+script = ExtResource("7_iws07")
 
 [node name="RayCast2D3" type="RayCast2D" parent="Player/FlashLight"]
+visible = false
 target_position = Vector2(292, 127)
-script = ExtResource("10_sfkqe")
+script = ExtResource("7_iws07")
 
-[node name="RotateTowardsMousePosition" parent="Player/FlashLight" node_paths=PackedStringArray("Parent") instance=ExtResource("7_haf4w")]
+[node name="RotateTowardsMousePosition" parent="Player/FlashLight" node_paths=PackedStringArray("Parent") instance=ExtResource("8_c1ymg")]
 process_mode = 4
 Parent = NodePath("../FlashLightSprite")
 
@@ -171,11 +226,15 @@ Parent = NodePath("../FlashLightSprite")
 scale = Vector2(1, 0.8)
 energy = 0.2
 shadow_enabled = true
-texture = ExtResource("6_c3jjh")
+texture = ExtResource("9_7n1xv")
 offset = Vector2(220, 0)
 texture_scale = 1.6
 
-[node name="Topdown2dKeyboardControl" parent="Player" instance=ExtResource("9_dq31a")]
+[node name="Arc" type="Node2D" parent="Player/FlashLight" node_paths=PackedStringArray("Targets")]
+script = ExtResource("15_6xctp")
+Targets = [NodePath("../../../NavMesh2DSeeker")]
+
+[node name="Topdown2dKeyboardControl" parent="Player" instance=ExtResource("10_m2blo")]
 process_mode = 4
 MovementSpeed = 300
 
@@ -205,7 +264,7 @@ position = Vector2(1144, 1016)
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.662745, 0.662745, 0.662745, 1)
 
-[node name="NavMesh2DSeeker2" parent="." node_paths=PackedStringArray("Targets") instance=ExtResource("3_07uax")]
+[node name="NavMesh2DSeeker2" parent="." node_paths=PackedStringArray("Targets") instance=ExtResource("11_bft7i")]
 process_mode = 4
 visible = false
 position = Vector2(-16, 1060)
@@ -216,20 +275,21 @@ MovementSpeed = 300
 [node name="NavMesh2DSeeker" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Targets")]
 z_index = 1
 position = Vector2(104, 98)
+rotation = -4.05964
 collision_layer = 256
 collision_mask = 0
-script = ExtResource("10_s0q41")
+script = ExtResource("12_82j25")
 Targets = [NodePath("../Player"), NodePath("../Waypoint1"), NodePath("../Waypoint2"), NodePath("../Waypoint3"), NodePath("../Waypoint4"), NodePath("../Waypoint5"), NodePath("../Waypoint6"), NodePath("../Waypoint7")]
 StopAfterLastTargetReached = false
 MovementSpeed = 300
 
-[node name="64px_NavigationAgent2D" parent="NavMesh2DSeeker" instance=ExtResource("11_fa61u")]
+[node name="64px_NavigationAgent2D" parent="NavMesh2DSeeker" instance=ExtResource("13_gscaa")]
 avoidance_enabled = false
 debug_enabled = false
 
 [node name="NavigateTowards2dNodes" type="Node" parent="NavMesh2DSeeker" node_paths=PackedStringArray("Parent", "Targets")]
 process_mode = 4
-script = ExtResource("12_6doq8")
+script = ExtResource("14_2oet7")
 Parent = NodePath("..")
 Targets = []
 
@@ -243,53 +303,12 @@ sprite_frames = SubResource("SpriteFrames_46frp")
 visible = false
 energy = 0.45
 shadow_enabled = true
-texture = ExtResource("4_pslln")
+texture = ExtResource("5_4gfyj")
 texture_scale = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavMesh2DSeeker"]
 shape = SubResource("RectangleShape2D_h22uu")
 
 [node name="Arc" type="Node2D" parent="NavMesh2DSeeker" node_paths=PackedStringArray("Targets")]
-script = ExtResource("5_fmkd0")
-Targets = [NodePath("../../Player"), NodePath("../../Player/FlashLight/RayCast2D"), NodePath("../../Player/FlashLight/RayCast2D2"), NodePath("../../Player/FlashLight/RayCast2D3")]
-
-[node name="NavMesh2DSeeker3" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Targets")]
-z_index = 1
-position = Vector2(592, 522)
-rotation = -1.57079
-collision_layer = 256
-collision_mask = 0
-script = ExtResource("10_s0q41")
-Targets = [NodePath("../Player"), NodePath("../Waypoint1"), NodePath("../Waypoint2"), NodePath("../Waypoint3"), NodePath("../Waypoint4"), NodePath("../Waypoint5"), NodePath("../Waypoint6"), NodePath("../Waypoint7")]
-StopAfterLastTargetReached = false
-MovementSpeed = 300
-
-[node name="64px_NavigationAgent2D" parent="NavMesh2DSeeker3" instance=ExtResource("11_fa61u")]
-avoidance_enabled = false
-debug_enabled = false
-
-[node name="NavigateTowards2dNodes" type="Node" parent="NavMesh2DSeeker3" node_paths=PackedStringArray("Parent", "Targets")]
-process_mode = 4
-script = ExtResource("12_6doq8")
-Parent = NodePath("../../NavMesh2DSeeker")
-Targets = []
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NavMesh2DSeeker3"]
-modulate = Color(0.839216, 0, 0.313726, 1)
-z_index = 1
-scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_46frp")
-
-[node name="PointLight2D" type="PointLight2D" parent="NavMesh2DSeeker3"]
-visible = false
-energy = 0.45
-shadow_enabled = true
-texture = ExtResource("4_pslln")
-texture_scale = 3.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NavMesh2DSeeker3"]
-shape = SubResource("RectangleShape2D_h22uu")
-
-[node name="Arc" type="Node2D" parent="NavMesh2DSeeker3" node_paths=PackedStringArray("Targets")]
-script = ExtResource("5_fmkd0")
-Targets = [NodePath("../../Player"), NodePath("../../Player/FlashLight/RayCast2D"), NodePath("../../Player/FlashLight/RayCast2D2"), NodePath("../../Player/FlashLight/RayCast2D3")]
+script = ExtResource("15_6xctp")
+Targets = [NodePath("../../Player")]
