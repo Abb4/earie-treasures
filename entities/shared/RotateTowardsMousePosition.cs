@@ -10,7 +10,9 @@ public partial class RotateTowardsMousePosition : Node
 
     public override void _Ready()
     {
-        Parent = this.FindParentNodeIfNotSet(Parent);
+        Parent = Parent.ToNodeResult()
+            .CompensateFromParent(this)
+            .ThrowIfValueNotSet();
     }
 
     public override void _Input(InputEvent inputEvent)

@@ -7,12 +7,14 @@ namespace Shared.Controlds;
 public partial class Topdown2dKeyboardControl : Node2D
 {
 	[Export] public CharacterBody2D Parent;
-	
+
 	[Export] public int MovementSpeed = 100;
 
 	public override void _Ready()
 	{
-		Parent = this.FindParentNodeIfNotSet(Parent);
+		Parent = Parent.ToNodeResult(nameof(Parent))
+			.CompensateFromParent(this)
+			.ThrowIfValueNotSet();
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -23,7 +25,7 @@ public partial class Topdown2dKeyboardControl : Node2D
 		{
 			direction.Y -= 1f;
 		}
-		
+
 		if (Input.IsActionPressed("move_down"))
 		{
 			direction.Y += 1f;
@@ -38,7 +40,7 @@ public partial class Topdown2dKeyboardControl : Node2D
 		{
 			direction.X -= 1f;
 		}
-		
+
 		if (direction != Vector2.Zero)
 		{
 			direction = direction.Normalized();
