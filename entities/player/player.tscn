@@ -49,7 +49,8 @@ texture_scale = 1.6
 [node name="RotateTowardsMousePosition" parent="FlashLight" node_paths=PackedStringArray("Parent") instance=ExtResource("4_4o5j7")]
 Parent = NodePath("..")
 
-[node name="Topdown2dKeyboardControl" parent="." instance=ExtResource("2_360xr")]
+[node name="Topdown2dKeyboardControl" parent="." node_paths=PackedStringArray("Parent") instance=ExtResource("2_360xr")]
+Parent = NodePath("..")
 MovementSpeed = 300
 
 [node name="Camera2D" type="Camera2D" parent="."]
