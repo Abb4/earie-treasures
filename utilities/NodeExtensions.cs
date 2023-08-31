@@ -42,12 +42,12 @@ public static partial class NodeExtensions
     public static Result<TResult, NodeError> FindNodeInChildrenRecursively<TResult>(this Result<Node, NodeError> parent, Func<TResult, bool> filter)
         where TResult : Node
     {
-        if(parent.IsFailure)
+        if (parent.IsFailure)
         {
             return Result.Failure<TResult, NodeError>(parent.Error);
         }
 
-        if(parent.Value is TResult && filter(parent.Value as TResult))
+        if (parent.Value is TResult && filter(parent.Value as TResult))
         {
             return Result.Success<TResult, NodeError>(parent.Value as TResult);
         }
@@ -56,7 +56,7 @@ public static partial class NodeExtensions
         {
             var childResult = child.ToNodeResult().FindNodeInChildrenRecursively(filter);
 
-            if(childResult.IsSuccess)
+            if (childResult.IsSuccess)
             {
                 return childResult;
             }
@@ -151,7 +151,7 @@ public static partial class NodeExtensions
     public static Result<T, NodeError> CompensateFromChildren<T>(this Result<T, NodeError> nodeResult, Node parent)
         where T : Node
     {
-        if(nodeResult.IsFailure)
+        if (nodeResult.IsFailure)
         {
             return parent.FindNodeInChildrenRecursively<T>();
         }
@@ -170,7 +170,7 @@ public static partial class NodeExtensions
     public static Result<T, NodeError> CompensateFromParent<T>(this Result<T, NodeError> nodeResult, Node child)
         where T : Node
     {
-        if(nodeResult.IsFailure)
+        if (nodeResult.IsFailure)
         {
             return child.ToNodeResult().GetParentSafe<T>();
         }
