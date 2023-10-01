@@ -4,7 +4,7 @@ using Godot;
 
 namespace utilities;
 
-public class NodeError : Exception, ICombine
+public class NodeError : GameError
 {
     public NodeError() : base()
     {
@@ -40,17 +40,14 @@ public class NodeError : Exception, ICombine
         return new NodeError($"Node {argumentName} of type {typeof(T).Name} was not set using editor even though it should have been");
     }
 
-    public ICombine Combine(ICombine value)
+    public static NodeError From(Exception e)
     {
-        var ohter = value as NodeError;
-
-        var exceptions = new Exception[]
+        if(e is InvalidCastException)
         {
-            this,
-            ohter
-        };
+            return CouldNotCastToRequiredTypeError.CouldNotCast(e);
+        }
 
-        return new NodeError("Multiple Errors Ocurred", new AggregateException(exceptions));
+        return new NodeError("Unexpected error ocurred", e);
     }
 }
 
@@ -112,5 +109,10 @@ public class CouldNotCastToRequiredTypeError : NodeSearchError
     {
         return new CouldNotCastToRequiredTypeError($"Could not cast found node {node.GetPath()} " +
                 $"of type {node.GetType()} to requested type {typeof(T).Name}");
+    }
+
+    public static NodeError CouldNotCast(Exception e)
+    {
+        return new CouldNotCastToRequiredTypeError("Node Cast Failed", e);
     }
 }
