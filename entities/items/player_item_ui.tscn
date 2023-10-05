@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctka0g00tkic4"]
+
+[ext_resource type="Script" path="res://entities/items/PlayerItemUi.cs" id="1_3r4ex"]
+[ext_resource type="Texture2D" uid="uid://dec1n1l26luu6" path="res://assets/icons/gold_coins.svg" id="2_slj13"]
+
+[node name="PlayerItemUi" type="PanelContainer" node_paths=PackedStringArray("ItemImage")]
+custom_minimum_size = Vector2(64, 64)
+script = ExtResource("1_3r4ex")
+ItemImage = NodePath("ItemImage")
+
+[node name="ItemImage" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_slj13")
+expand_mode = 2
