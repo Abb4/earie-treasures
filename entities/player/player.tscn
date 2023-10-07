@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dky0yxg0pgbok"]
+[gd_scene load_steps=13 format=3 uid="uid://dky0yxg0pgbok"]
 
 [ext_resource type="Texture2D" uid="uid://ctc4l4hk6ujq8" path="res://assets/neutral_point_light.webp" id="1_7j0y3"]
 [ext_resource type="PackedScene" uid="uid://covkwa50ntm0" path="res://entities/player/player_ui.tscn" id="1_gu2nm"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://wjwfy0e7jfxb" path="res://icon.svg" id="2_sdyld"]
 [ext_resource type="PackedScene" uid="uid://t0n35xldr67k" path="res://entities/shared/rotate_towards_mouse_position.tscn" id="4_4o5j7"]
 [ext_resource type="Script" path="res://entities/shared/interactions/KeyboardPlayerInteraction.cs" id="6_0c4dd"]
+[ext_resource type="Script" path="res://entities/player/PlayerInventory.cs" id="8_bn5by"]
+[ext_resource type="PackedScene" uid="uid://c8s6bi8usyyil" path="res://entities/items/player_item_container.tscn" id="9_dqikt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okq0l"]
 size = Vector2(64, 64)
@@ -67,9 +69,10 @@ collision_mask = 65536
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea2D"]
 shape = SubResource("CircleShape2D_tq86k")
 
-[node name="KeyboardPlayerInteraction" type="Node" parent="InteractionArea2D" node_paths=PackedStringArray("PlayerInteractionArea", "PlayerUi")]
+[node name="KeyboardPlayerInteraction" type="Node" parent="InteractionArea2D" node_paths=PackedStringArray("PlayerInteractionArea", "PlayerInventory", "PlayerUi")]
 script = ExtResource("6_0c4dd")
 PlayerInteractionArea = NodePath("..")
+PlayerInventory = NodePath("../../PlayerInventory")
 PlayerUi = NodePath("../../PlayerUi")
 
 [node name="PlayerUi" parent="." instance=ExtResource("1_gu2nm")]
@@ -80,3 +83,12 @@ offset_left = -574.0
 offset_top = -326.0
 offset_right = 583.0
 offset_bottom = 327.0
+
+[node name="PlayerInventory" type="Node" parent="." node_paths=PackedStringArray("PlayerInventoryItemContainer")]
+script = ExtResource("8_bn5by")
+PlayerInventoryItemContainer = NodePath("PlayerItemContainer")
+
+[node name="PlayerItemContainer" parent="PlayerInventory" instance=ExtResource("9_dqikt")]
+collision_layer = 0
+collision_mask = 0
+input_pickable = false

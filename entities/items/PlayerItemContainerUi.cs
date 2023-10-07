@@ -22,15 +22,7 @@ public partial class PlayerItemContainerUi : Godot.Container
     {
         foreach (var item in containerItems)
         {
-            var itemUi = PlayerItemUiScene.Instantiate<PlayerItemUi>();
-
-            itemUi.ConfigureUiFromItem(item);
-
-            itemUi.PlayerItemClicked += OnPlayerItemClicked;
-
-            itemUi.Show();
-
-            this.AddChild(itemUi);
+            AddItemUi(item);
         }
     }
 
@@ -39,13 +31,84 @@ public partial class PlayerItemContainerUi : Godot.Container
         EmitSignal(nameof(PlayerItemClicked), playerItem);
     }
 
-    public void PadContainerUiWithEmptyItemSlots(int padItemsCount)
+    public void PadContainerUiWithEmptyItemSlots(int maxContainerItemCount)
     {
-        for (int i = 0; i < padItemsCount; i++)
+        int paddingChildCount = maxContainerItemCount - this.GetChildCount();
+
+        for (int i = 0; i < paddingChildCount; i++)
         {
             var emptyItemUi = EmptyPlayerItemUiScene.Instantiate<Control>();
 
             this.AddChild(emptyItemUi);
+        }
+    }
+
+    internal void RemoveItemUi(PlayerItem playerItem)
+    {
+        foreach (var child in this.GetChildren())
+        {
+            if (child is PlayerItemUi itemUi)
+            {
+                if (itemUi.PlayerItem.GetInstanceId() == playerItem.GetInstanceId())
+                {
+                    itemUi.Hide();
+                    this.RemoveChild(child);
+                    child.QueueFree();
+                    break;
+                }
+            }
+        }
+    }
+
+    internal void AddItemUi(PlayerItem playerItem, bool useFirstEmptySlot = false)
+    {
+        var itemUi = PlayerItemUiScene.Instantiate<PlayerItemUi>();
+
+        itemUi.ConfigureUiFromItem(playerItem);
+
+        itemUi.PlayerItemClicked += OnPlayerItemClicked;
+
+        itemUi.Show();
+
+        if (!useFirstEmptySlot)
+        {
+            this.AddChild(itemUi);
+            return;
+        }
+
+        for (int i = 0; i < this.GetChildCount(); i++)
+        {
+            var child = this.GetChild(i);
+
+            if (child is not PlayerItemUi && child is Control emptyDisplay)
+            {
+                emptyDisplay.AddSibling(itemUi);
+
+                emptyDisplay.Hide();
+                this.RemoveChild(emptyDisplay);
+                emptyDisplay.QueueFree();
+
+                break;
+            }
+        }
+    }
+
+    internal void AdjustPaddingIfNeeded(int maximumContainerCapacity)
+    {
+        if (this.GetChildCount() <= maximumContainerCapacity)
+        {
+            return;
+        }
+
+        foreach (var child in this.GetChildren())
+        {
+            if (child is not PlayerItemUi && child is Control childControl)
+            {
+                childControl.Hide();
+                this.RemoveChild(childControl);
+                childControl.QueueFree();
+                break;
+            }
         }
     }
 }

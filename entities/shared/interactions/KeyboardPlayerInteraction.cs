@@ -9,11 +9,13 @@ public partial class KeyboardPlayerInteraction : Node
 {
     [Export] public Area2D PlayerInteractionArea;
 
+    [Export] public PlayerInventory PlayerInventory;
     [Export] public PlayerUi PlayerUi;
 
     public override void _Ready()
     {
         PlayerInteractionArea.AssertEditorPropertySet(nameof(PlayerInteractionArea));
+        PlayerInventory.AssertEditorPropertySet(nameof(PlayerInventory));
         PlayerUi.AssertEditorPropertySet(nameof(PlayerUi));
     }
 
@@ -23,11 +25,11 @@ public partial class KeyboardPlayerInteraction : Node
         {
             foreach (Area2D overlappingArea in PlayerInteractionArea.GetOverlappingAreas())
             {
-                if (overlappingArea is PlayerItemContainer playerItemContainer)
+                if (overlappingArea is PlayerItemContainer lootedContainer)
                 {
                     var interaction = Interaction<Area2D>.From(PlayerInteractionArea);
 
-                    var interactionResult = playerItemContainer.Interact(interaction);
+                    var interactionResult = lootedContainer.Interact(interaction);
 
                     if (interactionResult.IsFailure)
                     {
@@ -35,9 +37,13 @@ public partial class KeyboardPlayerInteraction : Node
                         continue;
                     }
 
-                    PlayerItemContainerUi containerUi = interactionResult.Value;
+                    PlayerItemContainerUi lootedContainerUi = interactionResult.Value;
 
-                    PlayerUi.DisplayLootedContainerUi(containerUi);
+                    PlayerInventory.RegisterLootedContainer(lootedContainer);
+
+                    PlayerUi.DisplayLootedContainerUi(lootedContainerUi);
+
+                    PlayerUi.DisplayLootedContainerUi(PlayerInventory.PlayerInventoryItemContainer.PlayerItemContainerUi);
                 }
             }
         }

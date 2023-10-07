@@ -34,8 +34,8 @@ layer_1/tile_data = PackedInt32Array(196617, 655360, 6)
 
 [node name="LootableContainer" type="Node2D" parent="Collectibles"]
 
-[node name="PlayerItemContainer" parent="Collectibles/LootableContainer" node_paths=PackedStringArray("containerItems") instance=ExtResource("4_48vxp")]
-containerItems = [NodePath("PlayerItem")]
+[node name="PlayerItemContainer" parent="Collectibles/LootableContainer" node_paths=PackedStringArray("ContainerItems") instance=ExtResource("4_48vxp")]
+ContainerItems = [NodePath("PlayerItem")]
 
 [node name="PlayerItem" parent="Collectibles/LootableContainer/PlayerItemContainer" instance=ExtResource("5_8pd5m")]
 

@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using CSharpFunctionalExtensions;
 using Godot;
 using Godot.Collections;
@@ -11,9 +13,9 @@ public partial class PlayerItemContainer : Area2D, IInteractible<Area2D, PlayerI
     [Signal] public delegate void PlayerItemClickedEventHandler(PlayerItem playerItem, PlayerItemContainer playerItemContainer);
 
     [Export] public PackedScene PlayerItemContainerUiScene;
-    private PlayerItemContainerUi PlayerItemContainerUi;
+    public PlayerItemContainerUi PlayerItemContainerUi;
 
-    [Export] public Array<PlayerItem> containerItems = new();
+    [Export] public Array<PlayerItem> ContainerItems = new();
 
     public int MaximumContainerCapacity = 9;
 
@@ -26,9 +28,9 @@ public partial class PlayerItemContainer : Area2D, IInteractible<Area2D, PlayerI
             errorHandler: NodeError.From)
             .Value;
 
-        PlayerItemContainerUi.ConfigureUiFromItems(containerItems);
+        PlayerItemContainerUi.ConfigureUiFromItems(ContainerItems);
 
-        PlayerItemContainerUi.PadContainerUiWithEmptyItemSlots(MaximumContainerCapacity - containerItems.Count);
+        PlayerItemContainerUi.PadContainerUiWithEmptyItemSlots(MaximumContainerCapacity);
 
         PlayerItemContainerUi.PlayerItemClicked += OnPlayerItemClicked;
 
@@ -43,5 +45,25 @@ public partial class PlayerItemContainer : Area2D, IInteractible<Area2D, PlayerI
     public Result<PlayerItemContainerUi, GameError> Interact(Interaction<Area2D> interaction)
     {
         return PlayerItemContainerUi;
+    }
+
+    internal void RemovePlayerItemFromContainer(PlayerItem playerItem)
+    {
+        ContainerItems.Remove(playerItem);
+        PlayerItemContainerUi.RemoveItemUi(playerItem);
+        PlayerItemContainerUi.PadContainerUiWithEmptyItemSlots(MaximumContainerCapacity);
+    }
+
+    internal void AddPlayerItemToContainer(PlayerItem playerItem)
+    {
+        ContainerItems.Add(playerItem);
+        PlayerItemContainerUi.AddItemUi(playerItem, useFirstEmptySlot: true);
+        PlayerItemContainerUi.AdjustPaddingIfNeeded(MaximumContainerCapacity);
+    }
+
+    internal void TransferItemTo(PlayerItem lootedItem, PlayerItemContainer playerInventoryItemContainer)
+    {
+        this.RemovePlayerItemFromContainer(lootedItem);
+        playerInventoryItemContainer.AddPlayerItemToContainer(lootedItem);
     }
 }
