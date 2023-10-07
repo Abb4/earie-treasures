@@ -8,7 +8,7 @@ namespace Entities.Items;
 
 public partial class PlayerItemContainer : Area2D, IInteractible<Area2D, PlayerItemContainerUi>
 {
-    [Signal] public delegate void ItemClickedEventHandler(PlayerItem playerItem, PlayerItemContainer lootableContainer);
+    [Signal] public delegate void PlayerItemClickedEventHandler(PlayerItem playerItem, PlayerItemContainer playerItemContainer);
 
     [Export] public PackedScene PlayerItemContainerUiScene;
     private PlayerItemContainerUi PlayerItemContainerUi;
@@ -30,14 +30,14 @@ public partial class PlayerItemContainer : Area2D, IInteractible<Area2D, PlayerI
 
         PlayerItemContainerUi.PadContainerUiWithEmptyItemSlots(MaximumContainerCapacity - containerItems.Count);
 
-        PlayerItemContainerUi.ItemClicked += OnItemClicked;
+        PlayerItemContainerUi.PlayerItemClicked += OnPlayerItemClicked;
 
         PlayerItemContainerUi.Show();
     }
 
-    private void OnItemClicked(PlayerItem playerItem)
+    private void OnPlayerItemClicked(PlayerItem playerItem)
     {
-        EmitSignal(nameof(ItemClicked), playerItem, this);
+        EmitSignal(nameof(PlayerItemClicked), playerItem, this);
     }
 
     public Result<PlayerItemContainerUi, GameError> Interact(Interaction<Area2D> interaction)

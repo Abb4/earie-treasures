@@ -7,7 +7,7 @@ namespace Entities.Items;
 
 public partial class PlayerItemContainerUi : Godot.Container
 {
-    [Signal] public delegate void ItemClickedEventHandler(PlayerItem playerItem);
+    [Signal] public delegate void PlayerItemClickedEventHandler(PlayerItem playerItem);
 
     [Export] public PackedScene PlayerItemUiScene;
     [Export] public PackedScene EmptyPlayerItemUiScene;
@@ -26,7 +26,7 @@ public partial class PlayerItemContainerUi : Godot.Container
 
             itemUi.ConfigureUiFromItem(item);
 
-            itemUi.ItemClicked += OnItemClicked;
+            itemUi.PlayerItemClicked += OnPlayerItemClicked;
 
             itemUi.Show();
 
@@ -34,9 +34,9 @@ public partial class PlayerItemContainerUi : Godot.Container
         }
     }
 
-    private void OnItemClicked(PlayerItem playerItem)
+    private void OnPlayerItemClicked(PlayerItem playerItem)
     {
-        EmitSignal(nameof(ItemClicked), playerItem);
+        EmitSignal(nameof(PlayerItemClicked), playerItem);
     }
 
     public void PadContainerUiWithEmptyItemSlots(int padItemsCount)

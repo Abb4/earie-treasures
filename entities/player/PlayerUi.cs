@@ -3,7 +3,6 @@ using Godot;
 using utilities;
 
 namespace Entities.Player;
-
 public partial class PlayerUi : PanelContainer
 {
     [Export] public Container MainDisplayContainer;
