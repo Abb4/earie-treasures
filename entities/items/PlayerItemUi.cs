@@ -5,21 +5,32 @@ namespace Entities.Items;
 
 public partial class PlayerItemUi : Container
 {
-	[Export] public TextureRect ItemImage;
+    [Signal] public delegate void ItemClickedEventHandler(PlayerItem playerItem, PlayerItemUi playerItemUi);
 
-    private PlayerItem playerItem;
+    [Export] public TextureRect ItemImage;
 
-	public override void _Ready()
-	{
-		ItemImage.AssertEditorPropertySet(nameof(ItemImage));
-	}
+    public PlayerItem PlayerItem;
 
-	public void ConfigureUiFromItem(PlayerItem playerItem)
-	{
-		var itemImage = GD.Load<Texture2D>(playerItem.IconPath);
+    public override void _Ready()
+    {
+        ItemImage.AssertEditorPropertySet(nameof(ItemImage));
+    }
 
-		ItemImage.Texture = itemImage;
+    public void ConfigureUiFromItem(PlayerItem playerItem)
+    {
+        var itemImage = GD.Load<Texture2D>(playerItem.IconPath);
 
-        this.playerItem = playerItem;
-	}
+        ItemImage.Texture = itemImage;
+
+        PlayerItem = playerItem;
+
+        ItemImage.GuiInput += OnItemClicked;
+    }
+
+    private void OnItemClicked(InputEvent @event)
+    {
+        if (@event is InputEventMouseButton mouseButton && mouseButton.IsPressed())
+        {
+        }
+    }
 }

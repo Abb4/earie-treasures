@@ -1,9 +1,8 @@
-using System;
+using Godot;
 
 namespace Entities.Items;
 
-public class PlayerItem
+public partial class PlayerItem : Node
 {
-    public string IconPath = "res://assets/icons/gold_coins.svg";
-    public Guid guid = Guid.NewGuid();
+    [Export] public string IconPath = "res://assets/icons/gold_coins.svg";
 }

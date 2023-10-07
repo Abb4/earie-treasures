@@ -10,5 +10,6 @@ ItemImage = NodePath("ItemImage")
 
 [node name="ItemImage" type="TextureRect" parent="."]
 layout_mode = 2
+mouse_filter = 0
 texture = ExtResource("2_slj13")
 expand_mode = 2

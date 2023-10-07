@@ -1,5 +1,5 @@
+using Entities.Items;
 using Godot;
-using Shared.Interactions;
 using utilities;
 
 namespace Entities.Player;

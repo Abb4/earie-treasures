@@ -1,17 +1,17 @@
-using System.Collections.Generic;
 using CSharpFunctionalExtensions;
-using Entities.Items;
 using Godot;
+using Godot.Collections;
+using Shared.Interactions;
 using utilities;
 
-namespace Shared.Interactions;
+namespace Entities.Items;
 
 public partial class LootableContainer : Area2D, IInteractible<Area2D, LootableContainerUi>
 {
     [Export] public PackedScene LootableContainerUiScene;
     private LootableContainerUi LootableContainerUi;
 
-    public List<PlayerItem> containerItems = new();
+    [Export] public Array<PlayerItem> containerItems = new();
 
     public int MaximumContainerCapacity = 9;
 
@@ -24,8 +24,6 @@ public partial class LootableContainer : Area2D, IInteractible<Area2D, LootableC
             errorHandler: NodeError.From)
             .Value;
 
-        AddDummyItems();
-
         LootableContainerUi.ConfigureUiFromItems(containerItems);
 
         LootableContainerUi.PadContainerUiWithEmptyItemSlots(MaximumContainerCapacity - containerItems.Count);
@@ -33,13 +31,6 @@ public partial class LootableContainer : Area2D, IInteractible<Area2D, LootableC
         // TODO subscribe to container UI events, remove items from container if necessary using their Guids
 
         LootableContainerUi.Show();
-    }
-
-    private void AddDummyItems()
-    {
-        containerItems.Add(new PlayerItem());
-        containerItems.Add(new PlayerItem());
-        containerItems.Add(new PlayerItem());
     }
 
     public Result<LootableContainerUi, GameError> Interact(Interaction<Area2D> interaction)

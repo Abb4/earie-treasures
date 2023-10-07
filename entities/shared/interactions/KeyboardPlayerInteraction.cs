@@ -1,3 +1,4 @@
+using Entities.Items;
 using Entities.Player;
 using Godot;
 using utilities;
@@ -16,8 +17,8 @@ public partial class KeyboardPlayerInteraction : Node
         PlayerUi.AssertEditorPropertySet(nameof(PlayerUi));
     }
 
-	public override void _Process(double delta)
-	{
+    public override void _Process(double delta)
+    {
         if (Input.IsActionJustPressed("interaction"))
         {
             foreach (Area2D overlappingArea in PlayerInteractionArea.GetOverlappingAreas())
@@ -40,5 +41,5 @@ public partial class KeyboardPlayerInteraction : Node
                 }
             }
         }
-	}
+    }
 }

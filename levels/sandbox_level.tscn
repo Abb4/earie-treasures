@@ -1,15 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmxphl6c67pns"]
+[gd_scene load_steps=8 format=3 uid="uid://bmxphl6c67pns"]
 
 [ext_resource type="PackedScene" uid="uid://c2pi30m0fctkv" path="res://entities/shared/mouse_confine_on_start.tscn" id="1_3qcfy"]
 [ext_resource type="PackedScene" uid="uid://bhjgy04nq6ynp" path="res://entities/shared/keyboard_toggle_mouse_confine.tscn" id="2_6atum"]
 [ext_resource type="TileSet" uid="uid://yyt201a3jcf2" path="res://assets/tilesets/kenney_scribbledungeons/kenney_scribbledungeons.tres" id="2_ir1kw"]
 [ext_resource type="PackedScene" uid="uid://dky0yxg0pgbok" path="res://entities/player/player.tscn" id="2_khlfx"]
 [ext_resource type="PackedScene" uid="uid://crupla8b4exdv" path="res://entities/shared/nav_mesh_2d_seeker.tscn" id="3_07uax"]
-[ext_resource type="Script" path="res://entities/shared/interactions/LootableContainer.cs" id="4_d2wic"]
-[ext_resource type="PackedScene" uid="uid://c8uj4tak0xw7m" path="res://entities/shared/interactions/lootable_container_ui.tscn" id="5_18itl"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_lt3eu"]
-radius = 65.49
+[ext_resource type="PackedScene" uid="uid://c8s6bi8usyyil" path="res://entities/items/lootable_container.tscn" id="4_48vxp"]
+[ext_resource type="PackedScene" uid="uid://bsu6vwrsandpu" path="res://entities/items/player_item.tscn" id="5_8pd5m"]
 
 [node name="SandboxLevel" type="Node2D"]
 
@@ -31,21 +28,14 @@ layer_1/modulate = Color(0.94902, 0.607843, 0, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 1
-layer_1/tile_data = PackedInt32Array(196617, 655360, 131078)
+layer_1/tile_data = PackedInt32Array(196617, 655360, 6)
 
 [node name="Collectibles" type="Node2D" parent="."]
 
-[node name="LootableContainer" type="Area2D" parent="Collectibles"]
-z_index = 1
-position = Vector2(1131, 387)
-collision_layer = 65536
-collision_mask = 65536
-script = ExtResource("4_d2wic")
-LootableContainerUiScene = ExtResource("5_18itl")
+[node name="LootableContainer" parent="Collectibles" node_paths=PackedStringArray("containerItems") instance=ExtResource("4_48vxp")]
+containerItems = [NodePath("PlayerItem")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectibles/LootableContainer"]
-position = Vector2(-1.5, 0.5)
-shape = SubResource("CircleShape2D_lt3eu")
+[node name="PlayerItem" parent="Collectibles/LootableContainer" instance=ExtResource("5_8pd5m")]
 
 [node name="Player" parent="." instance=ExtResource("2_khlfx")]
 z_index = -9
