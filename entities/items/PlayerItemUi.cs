@@ -5,7 +5,7 @@ namespace Entities.Items;
 
 public partial class PlayerItemUi : Container
 {
-    [Signal] public delegate void ItemClickedEventHandler(PlayerItem playerItem, PlayerItemUi playerItemUi);
+    [Signal] public delegate void ItemClickedEventHandler(PlayerItem playerItem);
 
     [Export] public TextureRect ItemImage;
 
@@ -31,6 +31,7 @@ public partial class PlayerItemUi : Container
     {
         if (@event is InputEventMouseButton mouseButton && mouseButton.IsPressed())
         {
+            EmitSignal(nameof(ItemClicked), PlayerItem);
         }
     }
 }

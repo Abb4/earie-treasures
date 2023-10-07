@@ -1,3 +1,4 @@
+using System;
 using CSharpFunctionalExtensions;
 using Godot;
 using Godot.Collections;
@@ -8,6 +9,8 @@ namespace Entities.Items;
 
 public partial class LootableContainer : Area2D, IInteractible<Area2D, LootableContainerUi>
 {
+    [Signal] public delegate void ItemClickedEventHandler(PlayerItem playerItem);
+
     [Export] public PackedScene LootableContainerUiScene;
     private LootableContainerUi LootableContainerUi;
 
@@ -28,9 +31,14 @@ public partial class LootableContainer : Area2D, IInteractible<Area2D, LootableC
 
         LootableContainerUi.PadContainerUiWithEmptyItemSlots(MaximumContainerCapacity - containerItems.Count);
 
-        // TODO subscribe to container UI events, remove items from container if necessary using their Guids
+        LootableContainerUi.ItemClicked += OnItemClicked;
 
         LootableContainerUi.Show();
+    }
+
+    private void OnItemClicked(PlayerItem playerItem)
+    {
+        EmitSignal(nameof(ItemClicked), playerItem);
     }
 
     public Result<LootableContainerUi, GameError> Interact(Interaction<Area2D> interaction)

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Godot;
 using utilities;
@@ -6,6 +7,8 @@ namespace Entities.Items;
 
 public partial class LootableContainerUi : Godot.Container
 {
+    [Signal] public delegate void ItemClickedEventHandler(PlayerItem playerItem);
+
     [Export] public PackedScene PlayerItemUiScene;
     [Export] public PackedScene EmptyPlayerItemUiScene;
 
@@ -23,12 +26,17 @@ public partial class LootableContainerUi : Godot.Container
 
             itemUi.ConfigureUiFromItem(item);
 
-            itemUi.Show();
+            itemUi.ItemClicked += OnItemClicked;
 
-            // TODO forward item UI events (such as click) to events of this class
+            itemUi.Show();
 
             this.AddChild(itemUi);
         }
+    }
+
+    private void OnItemClicked(PlayerItem playerItem)
+    {
+        EmitSignal(nameof(ItemClicked), playerItem);
     }
 
     public void PadContainerUiWithEmptyItemSlots(int padItemsCount)
