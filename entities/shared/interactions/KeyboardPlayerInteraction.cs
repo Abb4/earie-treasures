@@ -23,11 +23,11 @@ public partial class KeyboardPlayerInteraction : Node
         {
             foreach (Area2D overlappingArea in PlayerInteractionArea.GetOverlappingAreas())
             {
-                if (overlappingArea is LootableContainer lootableContainer)
+                if (overlappingArea is PlayerItemContainer playerItemContainer)
                 {
                     var interaction = Interaction<Area2D>.From(PlayerInteractionArea);
 
-                    var interactionResult = lootableContainer.Interact(interaction);
+                    var interactionResult = playerItemContainer.Interact(interaction);
 
                     if (interactionResult.IsFailure)
                     {
@@ -35,9 +35,9 @@ public partial class KeyboardPlayerInteraction : Node
                         continue;
                     }
 
-                    LootableContainerUi containerUi = interactionResult.Value;
+                    PlayerItemContainerUi containerUi = interactionResult.Value;
 
-                    PlayerUi.DisplayLootableContainerUi(containerUi);
+                    PlayerUi.DisplayLootedContainerUi(containerUi);
                 }
             }
         }

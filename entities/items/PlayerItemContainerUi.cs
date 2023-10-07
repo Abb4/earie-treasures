@@ -5,7 +5,7 @@ using utilities;
 
 namespace Entities.Items;
 
-public partial class LootableContainerUi : Godot.Container
+public partial class PlayerItemContainerUi : Godot.Container
 {
     [Signal] public delegate void ItemClickedEventHandler(PlayerItem playerItem);
 

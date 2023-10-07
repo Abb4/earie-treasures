@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8uj4tak0xw7m"]
+
+[ext_resource type="Script" path="res://entities/items/PlayerItemContainerUi.cs" id="1_44i83"]
+[ext_resource type="PackedScene" uid="uid://ctka0g00tkic4" path="res://entities/items/player_item_ui.tscn" id="2_djov5"]
+[ext_resource type="PackedScene" uid="uid://d0mjv6ui8w8qs" path="res://entities/items/empty_player_item_ui_scene.tscn" id="3_rgym8"]
+
+[node name="player_item_container_ui" type="GridContainer"]
+anchors_preset = -1
+anchor_left = 0.413194
+anchor_top = 0.345679
+anchor_right = 0.586806
+anchor_bottom = 0.654321
+offset_bottom = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 3
+script = ExtResource("1_44i83")
+PlayerItemUiScene = ExtResource("2_djov5")
+EmptyPlayerItemUiScene = ExtResource("3_rgym8")

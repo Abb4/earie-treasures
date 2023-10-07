@@ -6,16 +6,16 @@ namespace Entities.Player;
 
 public partial class PlayerUi : PanelContainer
 {
-	[Export] public Container MainDisplayContainer;
+    [Export] public Container MainDisplayContainer;
 
-	public override void _Ready()
-	{
-		MainDisplayContainer.AssertEditorPropertySet(nameof(MainDisplayContainer));
-	}
+    public override void _Ready()
+    {
+        MainDisplayContainer.AssertEditorPropertySet(nameof(MainDisplayContainer));
+    }
 
-	public void DisplayLootableContainerUi(LootableContainerUi containerUi)
-	{
-		MainDisplayContainer.AddChild(containerUi);
-		this.Show();
-	}
+    public void DisplayLootedContainerUi(PlayerItemContainerUi lootedContainerUi)
+    {
+        MainDisplayContainer.AddChild(lootedContainerUi);
+        this.Show();
+    }
 }
