@@ -51,6 +51,7 @@ public partial class PlayerItemContainerUi : Godot.Container
             {
                 if (itemUi.PlayerItem.GetInstanceId() == playerItem.GetInstanceId())
                 {
+                    itemUi.PlayerItemClicked -= OnPlayerItemClicked;
                     itemUi.Hide();
                     this.RemoveChild(child);
                     child.QueueFree();
@@ -66,31 +67,31 @@ public partial class PlayerItemContainerUi : Godot.Container
 
         itemUi.ConfigureUiFromItem(playerItem);
 
-        itemUi.PlayerItemClicked += OnPlayerItemClicked;
-
-        itemUi.Show();
-
         if (!useFirstEmptySlot)
         {
             this.AddChild(itemUi);
-            return;
         }
-
-        for (int i = 0; i < this.GetChildCount(); i++)
+        else
         {
-            var child = this.GetChild(i);
-
-            if (child is not PlayerItemUi && child is Control emptyDisplay)
+            for (int i = 0; i < this.GetChildCount(); i++)
             {
-                emptyDisplay.AddSibling(itemUi);
+                var child = this.GetChild(i);
 
-                emptyDisplay.Hide();
-                this.RemoveChild(emptyDisplay);
-                emptyDisplay.QueueFree();
+                if (child is not PlayerItemUi && child is Control emptyDisplay)
+                {
+                    emptyDisplay.AddSibling(itemUi);
 
-                break;
+                    emptyDisplay.Hide();
+                    this.RemoveChild(emptyDisplay);
+                    emptyDisplay.QueueFree();
+
+                    break;
+                }
             }
         }
+
+        itemUi.PlayerItemClicked += OnPlayerItemClicked;
+        itemUi.Show();
     }
 
     internal void AdjustPaddingIfNeeded(int maximumContainerCapacity)

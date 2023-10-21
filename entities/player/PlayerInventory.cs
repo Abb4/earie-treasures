@@ -18,10 +18,16 @@ public partial class PlayerInventory : Node
     internal void RegisterLootedContainer(PlayerItemContainer lootedContainer)
     {
         lootedContainer.PlayerItemClicked += OnLootedContainerItemClicked;
+        PlayerInventoryItemContainer.PlayerItemClicked += OnInventoryItemClicked;
     }
 
     private void OnLootedContainerItemClicked(PlayerItem lootedItem, PlayerItemContainer lootedItemContainer)
     {
         lootedItemContainer.TransferItemTo(lootedItem, PlayerInventoryItemContainer);
+    }
+
+    private void OnInventoryItemClicked(PlayerItem playerItem, PlayerItemContainer playerItemContainer)
+    {
+        throw new NotImplementedException();
     }
 }
